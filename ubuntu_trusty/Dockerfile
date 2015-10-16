@@ -16,3 +16,10 @@ RUN ./autogen.sh
 RUN ./configure
 RUN make
 RUN make install
+
+RUN apt-get install -y ruby ruby-dev
+RUN gem install fpm
+
+ENV OUTPUT_PKG_NAME QuantLib-${GIT_VER}
+VOLUME ['/pkgdir']
+CMD fpm -t deb -s dir -n $OUTPUT_PKG_NAME -p / ${QUANTLIB_BUILD_DIR}/QuantLib
