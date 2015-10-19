@@ -39,5 +39,5 @@ CMD fpm \
  -v $APP_VER \
  -C $BUILD_TARGET_DIR \
  -p /pkgdir/${APP_NAME}-VERSION-ARCH.deb \
- usr/bin usr/lib
+ usr/bin usr/include usr/share usr/lib
  
