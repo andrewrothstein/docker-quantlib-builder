@@ -14,16 +14,12 @@ ENV GIT_VER QuantLib-v$APP_VER
 ENV GIT_SRC_URL ${GIT_TRANSPORT}://github.com/${GIT_REPO}.git
 
 ENV BUILD_SRC_DIR /tmp/quantlib
-# in cases where the C++ code is a subdirectory of the rep. this should default to .
-ENV BUILD_SRC_SUBDIR QuantLib
-ENV BUILD_SRC_FQDIR $BUILD_SRC_DIR/$BUILD_SRC_SUBDIR
 ENV BUILD_TARGET_DIR /tmp/installdir
 
 RUN apt-get update -y && apt-get install -y $BUILD_DEP_PKGS
 RUN git clone $GIT_SRC_URL $BUILD_SRC_DIR
 WORKDIR $BUILD_SRC_DIR
 RUN git checkout -b building-$GIT_VER $GIT_VER
-WORKDIR $BUILD_SRC_FQDIR
 RUN ./autogen.sh
 RUN ./configure --prefix=/usr
 RUN make -j 4
