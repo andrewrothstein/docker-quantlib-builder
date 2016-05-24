@@ -1,11 +1,11 @@
-FROM ubuntu:trusty
+FROM ubuntu:xenial
 MAINTAINER Andrew Rothstein <andrew.rothstein@gmail.com>
 
 ENV BUILD_DEP_PKGS "git g++ make libboost-all-dev autoconf automake libtool ruby ruby-dev"
 ENV BUILD_DEP_GEMS "fpm"
 
 ENV APP_NAME quantlib
-ENV APP_VER 1.6.2
+ENV APP_VER 1.8
 ENV APP_PKG_TYPE deb
 
 ENV GIT_TRANSPORT https
